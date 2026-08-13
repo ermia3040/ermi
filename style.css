@@ -1,0 +1,268 @@
+:root {
+    --paper: #FBF7EF;
+    --paper-line: #E7DFD0;
+    --ink: #2E2A24;
+    --ink-soft: #6B6355;
+    --sage: #5C7A5E;
+    --mustard: #D9A441;
+    --plum: #7A4B3A;
+    --rose: #C97064;
+    --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0 0 60px;
+    background: var(--paper);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 42px,
+        var(--paper-line) 43px
+    );
+    font-family: 'Vazirmatn', sans-serif;
+    color: var(--ink);
+    direction: rtl;
+}
+
+/* ---------- هدر شیشه‌ای ---------- */
+.jar-header {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 34px 24px 22px;
+    text-align: center;
+    position: relative;
+}
+
+.jar-lid {
+    width: 64px;
+    height: 14px;
+    background: var(--plum);
+    border-radius: 8px 8px 4px 4px;
+    margin: 0 auto 4px;
+}
+
+.jar-header h1 {
+    font-family: 'Lalezar', cursive;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--plum);
+    margin: 4px 0 6px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+}
+
+.counter-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.counter-pill {
+    background: white;
+    border: 2px solid var(--paper-line);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.counter-pill.remain { border-color: var(--mustard); color: var(--plum); }
+.counter-pill.done { border-color: var(--sage); color: var(--sage); }
+
+/* ---------- فرم افزودن ---------- */
+.add-form {
+    max-width: 640px;
+    margin: 0 auto 30px;
+    padding: 18px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: 0 3px 0 var(--paper-line);
+    border: 2px dashed var(--mustard);
+}
+
+.add-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.add-form-row:last-child { margin-bottom: 0; }
+
+.add-form input[type="text"],
+.add-form select {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 2px solid var(--paper-line);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 1rem;
+    background: var(--paper);
+    color: var(--ink);
+}
+.add-form input[name="quantity"] { flex: 0.7; }
+
+.add-form select { flex: 1; cursor: pointer; }
+
+.btn-add {
+    flex: 1;
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.15s ease;
+}
+.btn-add:hover { background: #4c6a4e; }
+.btn-add:active { transform: scale(0.97); }
+
+/* ---------- لیست دسته‌بندی‌شده ---------- */
+.list-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 18px;
+}
+
+.category-block {
+    margin-bottom: 22px;
+}
+
+.category-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    padding: 9px 16px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.cat-icon { font-size: 1.1rem; }
+.cat-name { flex: 1; }
+.cat-count {
+    background: rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 1px 10px;
+    font-size: 0.85rem;
+}
+
+.item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 0 var(--paper-line);
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--paper-line);
+}
+.item-row:last-child { border-bottom: none; }
+
+.toggle-form, .delete-form { margin: 0; }
+
+.check-circle {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 50%;
+    border: 2.5px solid var(--sage);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+.check-circle:hover { background: rgba(92,122,94,0.1); }
+
+.is-purchased .check-circle {
+    background: var(--sage);
+}
+.is-purchased .check-circle::after {
+    content: "✓";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -55%);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.item-text {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.item-name { font-size: 1.02rem; }
+.item-qty { color: var(--ink-soft); font-size: 0.88rem; white-space: nowrap; }
+
+.is-purchased .item-name,
+.is-purchased .item-qty {
+    text-decoration: line-through wavy var(--rose);
+    color: var(--ink-soft);
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: var(--rose);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.15s ease;
+}
+.btn-delete:hover { opacity: 1; }
+
+/* ---------- خالی بودن لیست ---------- */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--ink-soft);
+}
+.empty-state p { margin: 4px 0; font-size: 1.1rem; }
+.empty-sub { font-size: 0.9rem !important; }
+
+/* ---------- پاک کردن موارد خریداری‌شده ---------- */
+.clear-form {
+    max-width: 640px;
+    margin: 24px auto 0;
+    padding: 0 18px;
+    text-align: center;
+}
+.btn-clear {
+    background: white;
+    border: 2px solid var(--rose);
+    color: var(--rose);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-clear:hover { background: var(--rose); color: white; }
+
+/* ---------- ریسپانسیو موبایل ---------- */
+@media (max-width: 480px) {
+    .jar-header h1 { font-size: 1.9rem; }
+    .add-form-row { flex-direction: column; }
+    .add-form input[name="quantity"] { flex: 1; }
+}
